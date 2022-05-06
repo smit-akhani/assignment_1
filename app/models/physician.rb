@@ -14,6 +14,6 @@ class Physician < ApplicationRecord
     end
 
     def generate_id
-        self.unique_id = "P" + self.id.to_s
+        self.unique_id = "P" + (1000 + self.id).to_s
     end
 end
