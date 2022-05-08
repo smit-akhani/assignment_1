@@ -14,6 +14,6 @@ class Industry < ApplicationRecord
     end
 
     def generate_id
-        self.registration_number = "REG" + (1000 + self.id).to_s
+        self.update_attribute(:registration_number, ("REG" + (1000 + self.id).to_s))
     end
 end
