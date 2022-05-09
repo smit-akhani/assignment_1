@@ -14,6 +14,13 @@ class IndustriesController < ApplicationController
     def create
         @industries = Industry.new(industry_param)
         if @industries.save
+            @temp_arr = params[:industry][:arr_sectors]
+            @temp_arr.shift
+            if !@temp_arr.empty?
+                @temp_arr.each do |ele|
+                    @industries.sectors << Sector.find(ele)
+                end
+            end
             redirect_to industries_path
         end
     end
@@ -25,6 +32,14 @@ class IndustriesController < ApplicationController
     def update
         @industries = Industry.find(params[:id])
         if @industries.update(industry_param)
+            @temp_arr = params[:industry][:arr_sectors]
+            @temp_arr.shift
+            @industries.sectors.delete_all
+            if !@temp_arr.empty?
+                @temp_arr.each do |ele|
+                    @industries.sectors << Sector.find(ele)
+                end
+            end
             redirect_to industries_path
         end
     end
