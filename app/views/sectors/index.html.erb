@@ -1,0 +1,21 @@
+<%= link_to :New, new_sector_path %>
+<% if !@sectors.nil? %>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td></td>
+                <td></td>
+            </tr>
+        <thead>
+        <tbody>
+            <% @sectors.each do |ele| %>
+                <tr>
+                    <td><%= ele.name %></td>
+                    <td><%= link_to :Edit, edit_sector_path(ele.id) %></td>
+                    <td><%= button_to :Delete, sector_path(ele.id),  method: :delete %></td>
+                </tr>    
+            <% end %>
+        </tbody>
+    </table>
+<% end %>

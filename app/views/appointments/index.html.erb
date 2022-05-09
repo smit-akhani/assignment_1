@@ -1,0 +1,25 @@
+<%= link_to :New, new_appointment_path %>
+<% if !@appointments.empty? %>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Patient</td>
+                <td>Physician</td>
+                <td>Appointment Date</td>
+                <td></td>
+                <td></td>
+            </tr>
+        <thead>
+        <tbody>
+            <% @appointments.each do |ele| %>
+                <tr>
+                    <td><%= ele.patient.name %></td>
+                    <td><%= ele.physician.name %></td>
+                    <td><%= ele.appointment_date %></td>
+                    <td><%= link_to :Edit, edit_appointment_path(ele.id) %></td>
+                    <td><%= button_to :Delete, appointment_path(ele.id),  method: :delete %></td>
+                </tr>    
+            <% end %>
+        </tbody>
+    </table>
+<% end %>

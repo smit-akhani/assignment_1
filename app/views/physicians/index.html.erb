@@ -1,0 +1,25 @@
+<%= link_to :New, new_physician_path %>
+<% if !@physicians.empty? %>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Unique ID</td>
+                <td></td>
+                <td></td>
+            </tr>
+        <thead>
+        <tbody>
+            <% @physicians.each do |ele| %>
+                <tr>
+                    <td><%= ele.name %></td>
+                    <td><%= ele.email %></td>
+                    <td><%= ele.unique_id %></td>
+                    <td><%= link_to :Edit, edit_physician_path(ele.id) %></td>
+                    <td><%= button_to :Delete, physician_path(ele.id),  method: :delete %></td>
+                </tr>    
+            <% end %>
+        </tbody>
+    </table>
+<% end %>

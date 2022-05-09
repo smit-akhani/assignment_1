@@ -19,7 +19,7 @@
                     <td><%= ele.registration_number %></td>
                     <td><%= ele.sectors.empty? ? "Nil" : ele.sectors.pluck(:name) %></td>
                     <td><%= link_to :Edit, edit_industry_path(ele.id) %></td>
-                    <td><%= link_to :Delete, delete_industry_path(ele.id) %></td>
+                    <td><%= button_to :Delete, industry_path(ele.id),  method: :delete %></td>
                 </tr>    
             <% end %>
         </tbody>

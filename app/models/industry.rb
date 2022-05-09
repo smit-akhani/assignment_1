@@ -10,7 +10,7 @@ class Industry < ApplicationRecord
 
     private
     def downcase_email
-        self.email.downcase!
+       self.email.downcase!
     end
 
     def generate_id

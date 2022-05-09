@@ -1,0 +1,6 @@
+<%=form_with model:@industries, url:{action: "update"} do |f|%>
+    <%= f.text_field :name,placeholder:"Name" %><br/>
+    <%= f.text_field :email,placeholder:"Email" %><br/>
+    <%= f.select(:arr_sectors, Sector.all.map{ |t| [t.name, t.id]}, { selected: @industries.sectors.select(:id).pluck(:id)}, {multiple: true}) %><br/>
+    <%= f.submit%>
+<%end%>
